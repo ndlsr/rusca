@@ -87,15 +87,12 @@ if st.session_state.current_question < len(questions):
             st.session_state.answered = True
             st.session_state.show_result = True
 
-    sonraki = st.button("➡️ Sonraki Soru")
-
-    if sonraki and st.session_state.answered:
-        st.session_state.current_question += 1
-        st.session_state.answer = ""
-        st.session_state.answered = False
-        st.session_state.show_result = False
-    elif sonraki and not st.session_state.answered:
-        st.warning("Önce cevabınızı gönderin.")
+    if st.session_state.answered:
+        if st.button("➡️ Sonraki Soru"):
+            st.session_state.current_question += 1
+            st.session_state.answer = ""
+            st.session_state.answered = False
+            st.session_state.show_result = False
 
 else:
     st.balloons()
